@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to the 'restaurant' collection
+    match /restaurant/{document=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow read access to the 'menufood' collection
+    match /menufood/{document=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    // Allow read access to the 'reservations' collection
+		match /reservations/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
